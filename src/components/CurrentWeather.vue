@@ -1,10 +1,15 @@
 <template>
     <div>
         <h4>Current Weather</h4>
-        {{cityName}}
-        {{currentTemperature}}
-        {{wind}}
-        {{humidity}}
+        <img alt="" src="../assets/Icons/sunny.png" width="128"/>
+        <br/>
+        City Name: {{cityName}}
+        <br/>
+        Temperature : {{currentTemperature}}
+        <br/>
+        Wind km/h : {{wind}}
+        <br/>
+        Humidity : {{humidity}}
     </div>
 </template>
 

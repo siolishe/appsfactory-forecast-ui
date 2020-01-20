@@ -1,8 +1,14 @@
 <template>
     <div id="app">
-        <img alt="Vue logo" src="./assets/logo.png">
         <current-weather city-name="test" current-temperature="20" humidity="52%" wind="10 k/h"/>
-        <Next5DaysForecast next5="[65,2]"/>
+        <Next5DaysForecast v-bind:next5="
+        [
+            {'day':'Fri','icon':'sunny','min':'1','max':'5'}
+            ,{'day':'Fri','icon':'sunny','min':'1','max':'5'}
+            ,{'day':'Fri','icon':'sunny','min':'1','max':'5'}
+            ,{'day':'Fri','icon':'sunny','min':'1','max':'5'}
+            ,{'day':'Fri','icon':'sunny','min':'1','max':'5'}
+            ]"/>
     </div>
 </template>
 
