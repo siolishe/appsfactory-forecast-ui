@@ -6,6 +6,8 @@
 </template>
 
 <script>
+    import Connector from "./Client";
+
     export default {
         name: "Search",
         data() {
@@ -15,8 +17,9 @@
         },
         methods: {
             GetData() {
-                console.log("fetchdata");
-                this.$emit("notify", this.inputValue)
+                let d = Connector("https://api.openweathermap.org/data/2.5/forecast?q=berlin&apikey=fcadd28326c90c3262054e0e6ca599cd");
+                console.log(d.data);
+                this.$emit("notify", d.data)
             }
         },
     }

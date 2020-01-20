@@ -1,15 +1,14 @@
 <template>
     <div id="app">
         <search @notify="updateData"/>
-        <p>{{ data.text }}</p>
         <current-weather city-name="test" current-temperature="20" humidity="52%" wind="10 k/h"/>
         <Next5DaysForecast :next5="
         [
-            {'day':'Fri','icon':'sunny','min':'1','max':'5'}
-            ,{'day':'Fri','icon':'sunny','min':'1','max':'5'}
+            {'day':'Fri','icon':'cloudy','min':'1','max':'5'}
+            ,{'day':'Fri','icon':'lightSnow','min':'1','max':'5'}
             ,{'day':'Fri','icon':'shower','min':'1','max':'5'}
             ,{'day':'Fri','icon':'sunny','min':'1','max':'5'}
-            ,{'day':'Fri','icon':'sunny','min':'1','max':'5'}
+            ,{'day':'Fri','icon':'rainy','min':'1','max':'5'}
             ]"/>
     </div>
 </template>
@@ -39,13 +38,6 @@
                 console.log(data);
                 this.weatherData = data
             }
-        },
-        mounted() {
-            setTimeout(() => {
-                this.data = {
-                    text: 'b'
-                }
-            }, 3000)
         }
     }
 </script>
