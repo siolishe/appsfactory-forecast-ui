@@ -1,15 +1,8 @@
 <template>
     <div id="app">
         <search @notify="updateData"/>
-        <current-weather city-name="test" current-temperature="20" humidity="52%" wind="10 k/h"/>
-        <Next5DaysForecast :next5="
-        [
-            {'day':'Fri','icon':'cloudy','min':'1','max':'5'}
-            ,{'day':'Fri','icon':'lightSnow','min':'1','max':'5'}
-            ,{'day':'Fri','icon':'shower','min':'1','max':'5'}
-            ,{'day':'Fri','icon':'sunny','min':'1','max':'5'}
-            ,{'day':'Fri','icon':'rainy','min':'1','max':'5'}
-            ]"/>
+        <current-weather :data="this.currentData"/>
+        <Next5DaysForecast :next5="this.weatherData"/>
     </div>
 </template>
 
@@ -17,6 +10,8 @@
     import Next5DaysForecast from "./components/Next5DaysForecast";
     import CurrentWeather from "./components/CurrentWeather";
     import Search from "./components/Search";
+    import 'bootstrap/dist/css/bootstrap.css'
+    import 'bootstrap-vue/dist/bootstrap-vue.css'
 
     export default {
         name: 'app',
@@ -28,15 +23,14 @@
         data() {
             return {
                 weatherData: null,
-                data: {
-                    text: 'a'
-                }
+                currentData: null
             }
         },
         methods: {
-            updateData(data) {
-                console.log(data);
-                this.weatherData = data
+            updateData(data, data2) {
+                console.log(data, data2);
+                this.weatherData = data;
+                this.currentData = data2
             }
         }
     }

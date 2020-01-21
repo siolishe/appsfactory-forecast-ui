@@ -1,12 +1,14 @@
 <template>
     <div>
-        <input type="text" v-model="inputValue"/>
+        <label>
+            <input type="text" v-model="inputValue"/>
+        </label>
         <button @click="GetData">Emit</button>
     </div>
 </template>
 
 <script>
-    import Connector from "./Client";
+    import Client from "./Client";
 
     export default {
         name: "Search",
@@ -16,10 +18,11 @@
             }
         },
         methods: {
-            GetData() {
-                let d = Connector("https://api.openweathermap.org/data/2.5/forecast?q=berlin&apikey=fcadd28326c90c3262054e0e6ca599cd");
-                console.log(d.data);
-                this.$emit("notify", d.data)
+            async GetData() {
+                let next5DaysData = await Client("http://localhost:5000/WeatherForecast/forecast?city=" + this.inputValue);
+                let currentData = await Client("http://localhost:5000/WeatherForecast/forecast?city=" + this.inputValue);
+                console.log(currentData);
+                this.$emit("notify", next5DaysData.list, currentData)
             }
         },
     }

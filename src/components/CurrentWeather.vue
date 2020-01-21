@@ -3,13 +3,17 @@
         <h4>Current Weather</h4>
         <img alt="" src="../assets/Icons/sunny.png" width="128"/>
         <br/>
-        City Name: {{cityName}}
+        City Name: {{data.cityname}}
         <br/>
-        Temperature : {{currentTemperature}}
+        Max : {{data.maxTemp}}
         <br/>
-        Wind km/h : {{wind}}
+        Min : {{data.minTemp}}
         <br/>
-        Humidity : {{humidity}}
+        Temperature : {{data.temprature}}
+        <br/>
+        Wind km/h : {{data.windspeed}}
+        <br/>
+        Humidity : {{data.humidity}}%
     </div>
 </template>
 
@@ -17,10 +21,7 @@
     export default {
         name: "CurrentWeather",
         props: {
-            cityName: String,
-            currentTemperature: String,
-            wind: String,
-            humidity: String
+            data: null
         }
     }
 </script>

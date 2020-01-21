@@ -4,9 +4,10 @@
         <span :key="index" v-for="(item,index) in next5">
             {{item.day}}
             <!--{{item.icon}}-->
-            <img v-bind:alt="item.icon" v-bind:src="require(`../assets/Icons/${item.icon}.png`)" width="64">
-            {{item.min}}
-            {{item.max}}
+            <!--            <img v-bind:alt="item.icon" v-bind:src="require(`../assets/Icons/${item.icon}.png`)" width="64">-->
+            {{item.minTemp}}
+            {{item.maxTemp}}
+            {{item.dayOfWeek}}
         </span>
     </div>
 </template>
