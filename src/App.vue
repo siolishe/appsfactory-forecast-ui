@@ -1,21 +1,40 @@
 <template>
-    <div id="app">
+    <b-container id="app">
         <search @notify="updateData"/>
-        <current-weather :data="this.currentData"/>
-        <Next5DaysForecast :next5="this.weatherData"/>
-    </div>
+        <b-row>
+            <b-col cols="3">
+                <current-weather :data="this.currentData"/>
+            </b-col>
+            <b-col cols="9">
+                <forecast-chart :data="this.weatherData"/>
+            </b-col>
+        </b-row>
+        <b-row>
+            <Next5DaysForecast :next5="this.weatherData"/>
+        </b-row>
+    </b-container>
 </template>
 
 <script>
     import Next5DaysForecast from "./components/Next5DaysForecast";
     import CurrentWeather from "./components/CurrentWeather";
     import Search from "./components/Search";
+    import Vue from 'vue';
+    import {BootstrapVue, IconsPlugin} from 'bootstrap-vue';
     import 'bootstrap/dist/css/bootstrap.css'
     import 'bootstrap-vue/dist/bootstrap-vue.css'
+    import ForecastChart from "./components/ForecastChart";
+    import Chartkick from 'vue-chartkick'
+    import Chart from 'chart.js'
+
+    Vue.use(BootstrapVue);
+    Vue.use(IconsPlugin);
+    Vue.use(Chartkick.use(Chart));
 
     export default {
         name: 'app',
         components: {
+            ForecastChart,
             CurrentWeather,
             Next5DaysForecast,
             Search
@@ -27,10 +46,9 @@
             }
         },
         methods: {
-            updateData(data, data2) {
-                console.log(data, data2);
-                this.weatherData = data;
-                this.currentData = data2
+            updateData(weatherData, currentData) {
+                this.weatherData = weatherData;
+                this.currentData = currentData
             }
         }
     }
