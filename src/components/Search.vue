@@ -22,9 +22,10 @@
         },
         methods: {
             async GetData() {
-                let next5DaysData = await Client("http://localhost:5000/WeatherForecast/forecast?city=" + this.inputValue);
-                let currentData = await Client("http://localhost:5000/WeatherForecast/weather?city=" + this.inputValue);
-                this.$emit("notify", next5DaysData, currentData)
+                let next5DaysData = await Client("http://localhost:5000/WeatherForecast/forecast?input=" + this.inputValue);
+                let currentData = await Client("http://localhost:5000/WeatherForecast/weather?input=" + this.inputValue);
+                let chartData = await Client("http://localhost:5000/WeatherForecast/forecastChart?input=" + this.inputValue);
+                this.$emit("notify", next5DaysData, currentData, chartData)
             }
         },
     }

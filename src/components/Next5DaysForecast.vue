@@ -7,8 +7,8 @@
                 <b-row class="justify-content-md-center">
                     <icon-translator :weather-status="item.icon"/>
                 </b-row>
-                <b-row class="justify-content-md-center">{{item.minTemp}} °F</b-row>
-                <b-row class="justify-content-md-center">{{item.maxTemp}} °F</b-row>
+                <b-row class="justify-content-md-center">{{item.minTemp}} °c</b-row>
+                <b-row class="justify-content-md-center">{{item.maxTemp}} °c</b-row>
             </b-col>
         </b-row>
     </b-container>

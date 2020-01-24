@@ -5,11 +5,11 @@
         <br/>
         City Name: {{data.cityName}}
         <br/>
-        Max : {{data.maxTemp}}
+        Max : {{data.maxTemp}} °c
         <br/>
-        Min : {{data.minTemp}}
+        Min : {{data.minTemp}} °c
         <br/>
-        Temperature : {{data.temperature}}
+        Temperature : {{data.temperature}} °c
         <br/>
         Wind km/h : {{data.windSpeed}}
         <br/>

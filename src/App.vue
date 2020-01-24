@@ -2,11 +2,11 @@
     <b-container id="app">
         <search @notify="updateData"/>
         <b-row>
-            <b-col cols="3">
+            <b-col>
                 <current-weather :data="this.currentData"/>
             </b-col>
-            <b-col cols="9">
-                <forecast-chart :data="this.weatherData"/>
+            <b-col class="d-none d-lg-block" cols="9">
+                <forecast-chart :data="this.chartData"/>
             </b-col>
         </b-row>
         <b-row>
@@ -24,12 +24,11 @@
     import 'bootstrap/dist/css/bootstrap.css'
     import 'bootstrap-vue/dist/bootstrap-vue.css'
     import ForecastChart from "./components/ForecastChart";
-    import Chartkick from 'vue-chartkick'
-    import Chart from 'chart.js'
+    import {ChartPlugin} from '@syncfusion/ej2-vue-charts';
 
     Vue.use(BootstrapVue);
     Vue.use(IconsPlugin);
-    Vue.use(Chartkick.use(Chart));
+    Vue.use(ChartPlugin);
 
     export default {
         name: 'app',
@@ -46,9 +45,10 @@
             }
         },
         methods: {
-            updateData(weatherData, currentData) {
+            updateData(weatherData, currentData, chartData) {
                 this.weatherData = weatherData;
-                this.currentData = currentData
+                this.currentData = currentData;
+                this.chartData = chartData;
             }
         }
     }
