@@ -1,17 +1,26 @@
 <template>
     <b-container id="app">
         <search @notify="updateData"/>
-        <b-row>
-            <b-col>
-                <current-weather :data="this.currentData"/>
-            </b-col>
-            <b-col class="d-none d-lg-block" cols="9">
-                <forecast-chart :data="this.chartData"/>
-            </b-col>
-        </b-row>
-        <b-row>
-            <Next5DaysForecast :next5="this.weatherData"/>
-        </b-row>
+        <div v-if="!currentData & !weatherData">
+            Here you can search weather condition of your destination!
+        </div>
+        <div v-else-if="!currentData.cityName ">
+            Oh-Ah! Sorry :( <br>
+            Your destination could not be found!
+        </div>
+        <div v-else>
+            <b-row>
+                <b-col>
+                    <current-weather :data="this.currentData"/>
+                </b-col>
+                <b-col class="d-none d-md-block" cols="9">
+                    <forecast-chart :data="this.chartData"/>
+                </b-col>
+            </b-row>
+            <b-row>
+                <Next5DaysForecast :data="this.weatherData"/>
+            </b-row>
+        </div>
     </b-container>
 </template>
 

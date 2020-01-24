@@ -1,14 +1,18 @@
 <template>
-    <b-container>
-        <h4>Next 5 Days Forecast</h4>
-        <b-row class="justify-content-md-center">
-            <b-col :key="index" cols="2" v-for="(item,index) in next5">
-                <b-row class="justify-content-md-center">{{item.dayOfWeek}}</b-row>
-                <b-row class="justify-content-md-center">
+    <b-container class="container" v-if="this.data">
+        <h5>Next 5 Days Forecast</h5>
+        <b-row class="justify-content-center">
+            <b-col :key="index" cols="2" v-for="(item,index) in data">
+                <b-row class="d-none d-md-block">{{item.dayOfWeek}}</b-row>
+                <b-row class="justify-content-center">
                     <icon-translator :weather-status="item.icon"/>
                 </b-row>
-                <b-row class="justify-content-md-center">{{item.minTemp}} °c</b-row>
-                <b-row class="justify-content-md-center">{{item.maxTemp}} °c</b-row>
+                <b-row class="justify-content-center">
+                    <b-icon-arrow-up/>
+                    {{item.maxTemp}} <small>°c</small></b-row>
+                <b-row class="justify-content-center">
+                    <b-icon-arrow-down/>
+                    {{item.minTemp}} <small>°c</small></b-row>
             </b-col>
         </b-row>
     </b-container>
@@ -23,11 +27,13 @@
             IconTranslator
         },
         props: {
-            next5: Array
+            data: Array
         }
     }
 </script>
 
 <style scoped>
-
+    .container {
+        margin-top: 3%;
+    }
 </style>

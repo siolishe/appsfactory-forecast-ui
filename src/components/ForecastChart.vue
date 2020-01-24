@@ -1,10 +1,14 @@
 <template>
-    <ejs-chart :legendSettings='legendSettings' :primaryXAxis='primaryXAxis' :primaryYAxis='primaryYAxis' :title='title'
-               :tooltip='tooltip' id="container">
-        <e-series-collection>
-            <e-series :dataSource='updateData' name='Forecast' type='Line' xName='time' yName='minTemp'/>
-        </e-series-collection>
-    </ejs-chart>
+    <b-container v-if="this.data">
+        <h5>Next 5 Days</h5>
+        <ejs-chart :legendSettings='legendSettings' :primaryXAxis='primaryXAxis' :primaryYAxis='primaryYAxis'
+                   :title='title'
+                   :tooltip='tooltip' id="chart">
+            <e-series-collection>
+                <e-series :dataSource='updateData' name='' type='Line' xName='time' yName='minTemp'/>
+            </e-series-collection>
+        </ejs-chart>
+    </b-container>
 </template>
 
 <script>
@@ -28,8 +32,7 @@
                         visible: true
                     }
                 },
-                tooltip: {enable: true},
-                title: "Next 5 Days"
+                tooltip: {enable: true}
             };
         }, provide: {
             chart: [LineSeries, Category, Tooltip]
@@ -40,14 +43,13 @@
         computed: {
             updateData() {
                 return this.data;
-                //{'2017-01-01 00:00:00 -0800': 0, '2017-01-01 00:01:00 -0800': 5};
             }
         }
     }
 </script>
 
 <style scoped>
-    #container {
+    #chart {
         height: 350px;
     }
 </style>
